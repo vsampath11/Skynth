@@ -33,4 +33,4 @@ WhatsApp: +94 75 158 1782
 The supplied Formspree endpoint is retained in site.js: https://formspree.io/f/mjybnlpn.
 After deployment, send a test enquiry to verify the endpoint is active.
 
-Read PHOTO-VIDEO-GUIDE-SI.txt for exact filenames and locations.
+Read PHOTO-VIDEO-GUIDE-SI.txt for exact filenames and locations..
