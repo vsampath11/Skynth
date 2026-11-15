@@ -7,7 +7,7 @@
 .skynth-reviews {
   position: relative;
   overflow: hidden;
-  padding-top: 105px;
+  padding-top: 105px; 
   padding-bottom: 110px;
   background: linear-gradient(180deg, #11151a 0%, #090b0e 100%);
   color: #f3f1ec;
