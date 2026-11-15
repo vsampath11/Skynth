@@ -1,0 +1,453 @@
+
+/* =====================================================
+   SKYNTH — CLIENT REVIEWS
+   Dark cinematic design
+===================================================== */
+
+.skynth-reviews {
+  position: relative;
+  overflow: hidden;
+  padding-top: 105px;
+  padding-bottom: 110px;
+  background: linear-gradient(180deg, #11151a 0%, #090b0e 100%);
+  color: #f3f1ec;
+}
+
+.skynth-reviews::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: 5%;
+  right: -260px;
+  border-radius: 50%;
+  background: rgba(203, 166, 107, 0.045);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.skynth-reviews-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+.skynth-reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.skynth-reviews-heading {
+  max-width: 720px;
+}
+
+.skynth-reviews-heading h2 {
+  margin: 12px 0 18px;
+  font-family: var(--display, "Manrope", sans-serif);
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.skynth-reviews-heading h2 em {
+  color: #cba66b;
+  font-style: normal;
+}
+
+.skynth-reviews-heading > p:last-child {
+  max-width: 580px;
+  color: #a7adb2;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.skynth-reviews-link {
+  flex-shrink: 0;
+  color: #cba66b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.skynth-reviews-link:hover {
+  color: #f3f1ec;
+  transform: translateX(4px);
+}
+
+
+/* ---------- REVIEW STATUS ---------- */
+
+.skynth-reviews-status {
+  margin: 0 0 25px;
+  padding: 17px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #a7adb2;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.skynth-reviews-status[hidden] {
+  display: none;
+}
+
+
+/* ---------- REVIEW CARDS ---------- */
+
+.skynth-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.skynth-review-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  padding: 27px;
+  background: #151a20;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.skynth-review-card:hover {
+  transform: translateY(-5px);
+  background: #191f26;
+  border-color: rgba(203, 166, 107, 0.35);
+}
+
+.skynth-review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.skynth-review-stars {
+  color: #cba66b;
+  font-size: 16px;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.skynth-review-quote-mark {
+  color: rgba(203, 166, 107, 0.55);
+  font-family: Georgia, serif;
+  font-size: 44px;
+  line-height: 0.7;
+}
+
+.skynth-review-text {
+  flex: 1;
+  margin: 0 0 25px;
+  color: #d4d5d3;
+  font-size: 14px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.skynth-review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 14px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skynth-review-client {
+  color: #f3f1ec;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.skynth-review-service {
+  display: block;
+  margin-top: 5px;
+  color: #a7adb2;
+  font-size: 11px;
+}
+
+.skynth-review-date {
+  flex-shrink: 0;
+  color: #838a90;
+  font-size: 10px;
+}
+
+
+/* ---------- REVIEW FORM INTRO ---------- */
+
+.skynth-review-invite {
+  margin-top: 65px;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  text-align: center;
+}
+
+.skynth-review-invite h3 {
+  margin: 10px 0;
+  font-family: var(--display, "Manrope", sans-serif);
+  font-size: clamp(25px, 3.5vw, 38px);
+  letter-spacing: -0.035em;
+}
+
+.skynth-review-invite h3 em {
+  color: #cba66b;
+  font-style: normal;
+}
+
+.skynth-review-invite p:last-child {
+  max-width: 540px;
+  margin: 0 auto;
+  color: #a7adb2;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+
+/* ---------- REVIEW SUBMISSION FORM ---------- */
+
+.skynth-review-form-wrap {
+  width: min(100%, 760px);
+  margin: 55px auto 0;
+  padding: 35px;
+  background: #11161c;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+}
+
+.skynth-review-form-heading {
+  margin-bottom: 28px;
+}
+
+.skynth-review-form-heading h3 {
+  margin: 10px 0;
+  font-family: var(--display, "Manrope", sans-serif);
+  font-size: clamp(25px, 4vw, 36px);
+}
+
+.skynth-review-form-heading p:last-child {
+  color: #a7adb2;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.skynth-review-form {
+  display: grid;
+  gap: 19px;
+}
+
+.skynth-review-form label,
+.skynth-review-form legend {
+  display: block;
+  color: #d8d9d6;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.skynth-review-form input:not([type="radio"]):not([type="checkbox"]),
+.skynth-review-form select,
+.skynth-review-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+  padding: 14px 15px;
+  background: #090d11;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  outline: none;
+  color: #f3f1ec;
+  font: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s ease;
+}
+
+.skynth-review-form input:focus,
+.skynth-review-form select:focus,
+.skynth-review-form textarea:focus {
+  border-color: #cba66b;
+}
+
+.skynth-review-form input::placeholder,
+.skynth-review-form textarea::placeholder {
+  color: #697179;
+}
+
+.skynth-review-form select {
+  cursor: pointer;
+}
+
+.skynth-review-form textarea {
+  min-height: 145px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.skynth-review-rating {
+  padding: 0;
+  border: 0;
+}
+
+.skynth-review-rating legend {
+  margin-bottom: 12px;
+}
+
+.skynth-rating-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skynth-rating-option {
+  position: relative;
+  display: inline-flex !important;
+  cursor: pointer;
+}
+
+.skynth-rating-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.skynth-rating-option span {
+  color: #606870;
+  font-size: 31px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.skynth-rating-option:hover span,
+.skynth-rating-option input:checked + span {
+  color: #cba66b;
+}
+
+.skynth-rating-option input:focus-visible + span {
+  outline: 2px solid #cba66b;
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.skynth-review-consent {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 11px;
+  color: #a7adb2 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+.skynth-review-consent input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin: 2px 0 0;
+  accent-color: #cba66b;
+}
+
+.skynth-review-submit {
+  justify-self: start;
+  min-width: 190px;
+  cursor: pointer;
+}
+
+.skynth-review-submit:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.skynth-review-form-status {
+  min-height: 22px;
+  margin: 0;
+  color: #a7adb2;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.skynth-review-form-status.is-success {
+  color: #91c9a0;
+}
+
+.skynth-review-form-status.is-error {
+  color: #e69a91;
+}
+
+
+/* ---------- HONEYPOT ---------- */
+
+.skynth-review-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 850px) {
+  .skynth-reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skynth-reviews-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .skynth-reviews {
+    padding-top: 75px;
+    padding-bottom: 80px;
+  }
+
+  .skynth-reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skynth-review-card {
+    min-height: 220px;
+    padding: 23px;
+  }
+
+  .skynth-review-form-wrap {
+    padding: 23px 18px;
+  }
+
+  .skynth-review-invite {
+    margin-top: 45px;
+  }
+
+  .skynth-review-submit {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skynth-review-card,
+  .skynth-reviews-link,
+  .skynth-rating-option span {
+    transition: none;
+  }
+}
