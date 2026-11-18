@@ -1,3 +1,4 @@
+
 /* =====================================================
    SKYNTH — CLIENT REVIEWS
    Loads published reviews and submits new reviews.
@@ -131,12 +132,99 @@
     counterObserver.observe(element);
   }
 
-  document.querySelectorAll('[data-count-up]').forEach(element => {
+  // Static counters are initialized here. The Projects completed counter
+  // is excluded because its final value must come from Google Calendar.
+  document.querySelectorAll('[data-count-up]:not([data-projects-completed])').forEach(element => {
     setAnimatedCounter(element, Number(element.dataset.countUp), {
       decimals: Number(element.dataset.countDecimals || 0),
       suffix: element.dataset.countSuffix || ''
     });
   });
+
+  /* =====================================================
+     LOAD COMPLETED PROJECT COUNT FROM GOOGLE CALENDAR API
+     The Apps Script endpoint calculates completed bookings
+     using Asia/Colombo dates. JSONP is used because the
+     Apps Script web app is cross-origin.
+  ===================================================== */
+
+  function loadCompletedProjects() {
+    const counter = document.querySelector('[data-projects-completed]');
+    if (!counter) return;
+
+    const fallbackValue = Number(counter.dataset.countUp || 20);
+    const callbackName =
+      'skynthProjects_' + Date.now() + '_' + Math.floor(Math.random() * 1000000);
+
+    const script = document.createElement('script');
+    let completed = false;
+    let timeoutId = null;
+
+    function cleanup() {
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+
+      try {
+        delete window[callbackName];
+      } catch (error) {
+        window[callbackName] = undefined;
+      }
+
+      script.remove();
+    }
+
+    function showFallback() {
+      setAnimatedCounter(counter, fallbackValue, {
+        decimals: Number(counter.dataset.countDecimals || 0),
+        suffix: counter.dataset.countSuffix || ''
+      });
+    }
+
+    function finish(data) {
+      if (completed) return;
+      completed = true;
+      cleanup();
+
+      const total = Number(data && data.completedProjects);
+
+      if (
+        !data ||
+        data.error ||
+        !Number.isSafeInteger(total) ||
+        total < 0
+      ) {
+        showFallback();
+        return;
+      }
+
+      setAnimatedCounter(counter, total, {
+        decimals: Number(counter.dataset.countDecimals || 0),
+        suffix: counter.dataset.countSuffix || ''
+      });
+    }
+
+    window[callbackName] = finish;
+    script.async = true;
+    script.src =
+      API_URL +
+      '?action=projects&callback=' + encodeURIComponent(callbackName) +
+      '&_=' + Date.now();
+
+    script.onerror = () => {
+      if (completed) return;
+      completed = true;
+      cleanup();
+      showFallback();
+    };
+
+    timeoutId = window.setTimeout(() => {
+      if (completed) return;
+      completed = true;
+      cleanup();
+      showFallback();
+    }, 15000);
+
+    document.head.appendChild(script);
+  }
 
   /* =====================================================
      STAR PICKER
@@ -679,5 +767,6 @@
 
   paintRatingStars(getSelectedRating());
   updateCarouselControls();
+  loadCompletedProjects();
   loadReviews();
 })();
